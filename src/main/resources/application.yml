@@ -1,0 +1,36 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-service
+
+#버스 서버 rabbitmq에 등록   ( 변경사항들어오면 rabbit에 알려주고 rabbit에 등록된 애들(마이크로서비스)에게 알려줘서 바꿔준다.
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+  profiles:
+    active: native
+
+
+  cloud:
+    config:
+      server:
+#        native:
+#           search-locations: file:${user.home}/NATIVE-FILE-REPO  # 로컬파일경로  via location 'file:C:\Users\alstk/NATIVE-FILE-REPO/'
+        git:
+          uri: https://github.com/HwangminSang/config-server.git  # git에서
+#          username: 퍼플릭 일경우 필요없다
+#          password:
+        #  uri: file://C:/git-local-repo  //내컴퓨터에서
+
+
+        #엔드포인트 <클라이언트역할도함>
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health , busrefresh

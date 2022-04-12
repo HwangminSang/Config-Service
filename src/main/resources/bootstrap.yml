@@ -1,0 +1,8 @@
+#인클립션(암호화 과정)  대칭키에 사용될 수 있다
+encrypt:
+  #key: abcdefghijklmnopqstuvwyz01042773518  //임의로 내가 설정한것
+ key-store:
+   #location: file:${user.home}/keystore/apiEncryptionKey.jks  #파일을 읽어와서 encrypt와 decyprt에 사용되는 키 정보를 다 저장
+   location: file:/apiEncryptionKey.jks  #현재 키값을 가져오는곳 컨테이너 내부의 파일명
+   password: test1234
+   alias: apiEncryptionKey
